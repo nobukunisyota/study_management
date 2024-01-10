@@ -1,20 +1,32 @@
 use std::io;
 
-fn main() {
-    loop {
-        println!("please input title !");
-        let title = input_title();
-        if title.trim() == "exit" {
-            break;
-        }
-        println!("title is {}", title);
+struct Content {
+    title: String,
+    content: String,
+    time: String,
+}
+
+fn create_content(title: String, content: String, time: String) -> Content {
+    Content {
+        title,
+        content,
+        time,
     }
 }
 
-fn input_title() -> String {
-    let mut title = String::new();
+fn input(mut content: String) -> String {
     io::stdin()
-        .read_line(&mut title)
-        .expect("Failed to read line");
-    title
+        .read_line(&mut content)
+        .expect("Failed to read");
+    content
+}
+
+fn main() {
+    let mut title = String::new();
+    let mut content = String::new();
+    let mut time = String::new();
+    title = input(title);
+    content = input(content);
+    time = input(time);
+    create_content(title, content, time);
 }
