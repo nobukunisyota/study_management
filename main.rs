@@ -5,6 +5,15 @@ struct Content {
     content: String,
     time: String,
 }
+enum DayOfWeek {
+    Sunday,
+    Monday,
+    Tuesday,
+    Wednesday,
+    Thursday,
+    Friday,
+    Saturday,
+}
 
 fn create_content(title: String, content: String, time: String) -> Content {
     Content {
