@@ -1,41 +1,16 @@
-use std::io;
-
-struct Content {
+struct StudyData {
     title: String,
-    content: String,
-    time: String,
-}
-enum DayOfWeek {
-    Sunday,
-    Monday,
-    Tuesday,
-    Wednesday,
-    Thursday,
-    Friday,
-    Saturday,
+    time: u8,
 }
 
-fn create_content(title: String, content: String, time: String) -> Content {
-    Content {
-        title,
-        content,
-        time,
+fn create_study_data(title: String, time: u8) -> StudyData {
+    StudyData {
+        title: title,
+        time: time,
     }
 }
 
-fn input(mut content: String) -> String {
-    io::stdin()
-        .read_line(&mut content)
-        .expect("Failed to read");
-    content
-}
-
 fn main() {
-    let mut title = String::new();
-    let mut content = String::new();
-    let mut time = String::new();
-    title = input(title);
-    content = input(content);
-    time = input(time);
-    create_content(title, content, time);
+    let mut data = create_study_data("Rust".to_string(), 10);
+    println!("{}: {} hours", data.title, data.time);
 }
