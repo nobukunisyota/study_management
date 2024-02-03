@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,15 +12,13 @@
         }
         const wasm =
         './target/wasm32-unknown-unknown/release/wasm_rust_sampleapp.wasm'
-        const toUint32 = (num) => num >>> 0
         fetch(wasm)
         .then((response) => response.arrayBuffer())
         .then((bytes) => WebAssembly.instantiate(bytes, imports))
         .then((results) => {
-            const { add, get_timestamp, rand } = results.instance.exports
+            const { add, sub } = results.instance.exports
             console.log(add(1, 2))
-            console.log(get_timestamp())
-            console.log(toUint32(rand()))
+            console.log(sub(5, 1))
         })
     </script>
 </head>
